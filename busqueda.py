@@ -1,5 +1,22 @@
 import os
 import shutil
+import tkinter as tk
+from tkinter import filedialog
+
+# Crear la ventana de la aplicación
+root = tk.Tk()
+root.withdraw()
+
+# Solicitar al usuario que seleccione la carpeta de búsqueda
+print("Seleccione la carpeta de búsqueda")
+search_path = filedialog.askdirectory()
+
+# Solicitar al usuario que seleccione la carpeta de destino
+print("Seleccione la carpeta de destino")
+save_path = filedialog.askdirectory()
+
+#Terminaciones de los archivos a buscar
+file_terminals = ['PD.pdf', 'PS.pdf']
 
 # Lectura de pedimentos a buscar
 file_names = []
@@ -9,16 +26,7 @@ with open("archivos.txt", "r") as file:
 
 print("Cantidad de archivos a buscar: ", len(file_names))
 
-# Inserta las terminaciones de los archivos a buscar EJEMPLO: ["PS.pdf","PD.pdf"]
-# Ingresa todas las terminaciones que se desean buscar
-file_terminals = ["PS.pdf","PD.pdf"]
-
-# Ingresa la ruta de las carpeta donde se desea buscar los archivos
-search_path = ""
 all_files = os.listdir(search_path)
-
-# Ingresa la ruta de la carpeta donde se desea guardar los archivos encontrados
-save_path = ""
 
 # Búsqueda de archivos en la carpeta especificada y guardado en la carpeta especificada
 for file_name in file_names:
